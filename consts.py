@@ -1,0 +1,5 @@
+CLIENT_ID = "6594bb1c683b4d0b8b691c581df70cb0"
+CLIENT_SECRET = "6fbf349534bf46a9b0f7cb17f64b5508"
+SPOTIPY_REDIRECT_URI = "http://127.0.0.1:9090"
+SCOPE = "playlist-modify-public"
+USERNAME = "mfknstarboi"
