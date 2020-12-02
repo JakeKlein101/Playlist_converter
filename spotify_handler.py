@@ -1,18 +1,17 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-import applemusicpy
-import Spotify_consts
+from Spotify_consts import *
 
 
 def create_playlist(sp, playlist_name):
-    sp.user_playlist_create(user=Spotify_consts.USERNAME,
+    sp.user_playlist_create(user=USERNAME,
                             name=playlist_name, public=True,
                             collaborative=False,
                             description=input("Describe your playlist:"))
 
 
 def get_playlist_id(sp, playlist_name=""):
-    playlists = sp.user_playlists(user=Spotify_consts.USERNAME, limit=50)
+    playlists = sp.user_playlists(user=USERNAME, limit=50)
     for playlist in playlists["items"]:
         if playlist["name"] == playlist_name:
             return playlist["id"]
@@ -29,10 +28,10 @@ def get_song_id_list_by_names(sp):
 
 
 def start_spotify():
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=Spotify_consts.SCOPE,
-                                                   client_id=Spotify_consts.CLIENT_ID,
-                                                   client_secret=Spotify_consts.CLIENT_SECRET,
-                                                   redirect_uri=Spotify_consts.SPOTIPY_REDIRECT_URI))
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=SCOPE,
+                                                   client_id=CLIENT_ID,
+                                                   client_secret=CLIENT_SECRET,
+                                                   redirect_uri=SPOTIPY_REDIRECT_URI))
 
     playlist_name = input("Whats the name of the playlist you want to create?")
     create_playlist(sp, playlist_name)
