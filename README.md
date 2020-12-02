@@ -3,5 +3,10 @@ A program to convert apple music/youtube playlists to Spotify playlists
 ## Usage
 
 ```python
-sp = spotipy.Spotify()
+from spotify_handler import *
+
+
+def main():
+    start_spotify()
+
 ```
