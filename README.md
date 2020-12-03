@@ -4,6 +4,7 @@ A program to convert apple music/youtube playlists to Spotify playlists
 
 ```python
 import spotify_handler
+import youtube_handler
 
 
 def main():
