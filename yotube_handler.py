@@ -7,6 +7,10 @@ import googleapiclient.errors
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 
+def print_responses(response):
+    print(response["items"])
+
+
 def main():
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
@@ -24,8 +28,7 @@ def main():
     request = youtube.playlistItems().list(part="snippet", playlistId=TEST_PLAYLIST)
     response = request.execute()
 
-    for item in response:
-        print(item["items"]["title"])
+    print_responses(response)
 
 
 if __name__ == '__main__':
