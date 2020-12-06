@@ -11,8 +11,8 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 def create_title_list(response):
     ret_list = []
     for item in response["items"]:
-        ret_list.append(item["snippet"]["description"])
-        print(item["snippet"]["title"])  # TODO: Parse by description.
+        ret_list.append(item["snippet"]["title"])  # TODO: Parse by description.
+        print(item["snippet"]["title"])
     return ret_list
 
 
@@ -32,7 +32,7 @@ def get_playlist_from_api(youtube):
     return response
 
 
-def parse_title_list_to_query(titles_list):
+def parse_title_list_to_query(titles_list):  # TODO: Parsing optimization needed.
     query_list = []
     temp_list = []
     for title in titles_list:
