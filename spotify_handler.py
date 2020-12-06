@@ -18,16 +18,17 @@ def get_playlist_id(sp, playlist_name=""):
     return 0
 
 
-def get_song_id_list_by_names(sp):
+def get_song_id_list_by_names(sp, query):
     song_id_list = []
-    song_names_list = ["franchise", "90210", "heartless"]
-    for song in song_names_list:
+    # song_names_list = ["Future%Where ya at"]
+    for song in query:
         searched = sp.search(q=song, type="track", market="IL", limit=1)
+        print(searched)
         song_id_list.append(searched["tracks"]["items"][-1]["uri"])
     return song_id_list
 
 
-def start_spotify():
+def start_spotify(query):
     sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=SCOPE,
                                                    client_id=CLIENT_ID,
                                                    client_secret=CLIENT_SECRET,
@@ -36,7 +37,7 @@ def start_spotify():
     playlist_name = input("Whats the name of the playlist you want to create?")
     create_playlist(sp, playlist_name)
     playlist_id = get_playlist_id(sp, playlist_name)
-    song_id_list = get_song_id_list_by_names(sp)
+    song_id_list = get_song_id_list_by_names(sp, query)
     sp.playlist_add_items(playlist_id=playlist_id, items=song_id_list)
 
 

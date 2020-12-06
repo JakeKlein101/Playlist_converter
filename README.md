@@ -8,7 +8,6 @@ import youtube_handler
 
 
 def main():
-    spotify_handler.start_spotify()
-
-
+    query = youtube_handler.start_yt()
+    spotify_handler.start_spotify(query)
 ```
